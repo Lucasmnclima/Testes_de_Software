@@ -40,5 +40,5 @@ Sou um entusiasta de tecnologia e apaixonado por garantir a qualidade do softwar
 
 ---
 
-Quero dizer que este repositório será alimentado com diversos outros exercícios até o fim do meu curso e sempre os listarei aqui.
+Quero dizer que este repositório será alimentado com diversos outros exercícios até o fim do meu curso e sempre os listarei aqui.  
 Espero que aproveitem este repositório tanto quanto eu gostei de criá-lo. Qualquer dúvida ou sugestão, fique à vontade para entrar em contato!
