@@ -18,6 +18,7 @@ describe('Funcionalidade: Login na loja EBAC', () => {
         cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, lucas (não é lucas? Sair)')
     })
 
+    //Senha incorreta
     it('Em caso de digitar senha incorreta', () => {
         // Acessar a página de login visita a url que queremos testar
         cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
