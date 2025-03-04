@@ -35,8 +35,8 @@ Bem-vindo ao meu repositório de Testes de Software! Este repositório contém u
 Sou um entusiasta de tecnologia e apaixonado por garantir a qualidade do software. Durante este curso, desenvolvi habilidades essenciais em teste de software que me permitem identificar, reportar e resolver problemas de forma eficaz. Estou sempre em busca de novas oportunidades para aplicar meus conhecimentos e contribuir para projetos inovadores.
 
 ## 📫 Contato
-- **Email**: [seuemail@example.com](lucasmnclima@gmail.com)
-- **LinkedIn**: [Seu LinkedIn](https://www.linkedin.com/in/lucasmnclima/)
+- **Email**: [lucasmnclima@gmail.com](lucasmnclima@gmail.com)
+- **LinkedIn**: [Lucas Nascimento](https://www.linkedin.com/in/lucasmnclima/)
 
 ---
 
