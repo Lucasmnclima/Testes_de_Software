@@ -1,0 +1,18 @@
+{
+  "name": "testes_de_software",
+  "version": "1.0.0",
+  "description": "Bem-vindo ao meu repositório de Testes de Software! Este repositório contém uma coleção de exercícios e projetos que realizei como parte do meu curso de especialização em Testes de Software na EBAC Online. Aqui, você encontrará uma variedade de tarefas que abordam diferentes aspectos e técnicas de qualidade de software.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^14.1.0"
+  }
+}
