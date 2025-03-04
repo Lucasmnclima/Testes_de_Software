@@ -32,7 +32,11 @@ Bem-vindo ao meu repositório de Testes de Software! Este repositório contém u
 - **Postman**: Para testes de API e validação de endpoints.
 
 ## 📚 Sobre Mim
-Estou na área de testes e qualidade de software há quase 3 anos. Os primeiros anos, como um estagiário, treinei na PRODEMGE - Companhia de Tecnologia da Informação do Estado de Minas Gerais, onde me aperfeiçoei como o único tester de um projeto gigante da FAPEMIG - Fundação de Amparo à Pesquisa do Estado de Minas Gerais. Durante este curso, aprimorei habilidades essenciais em teste de software que me permitem identificar, reportar e resolver problemas de forma eficaz. Atualmente, sou um trainee de testes da empresa Prover - soluções em tecnologia (Grupo Prover) e prestando serviço como terceiro para a Unimed BH em seu time de QA.
+
+Estou na área de testes e qualidade de software há quase 3 anos. Os primeiros anos, como um estagiário, treinei na PRODEMGE - Companhia de Tecnologia da Informação do Estado de Minas Gerais, onde me aperfeiçoei como o único tester de um projeto gigante da FAPEMIG - Fundação de Amparo à Pesquisa do Estado de Minas Gerais. 
+
+Durante este curso, aprimorei habilidades essenciais em teste de software que me permitem identificar, reportar e resolver problemas de forma eficaz. Atualmente, sou um trainee de testes da empresa Prover - soluções em tecnologia (Grupo Prover) e prestando serviço como terceiro para a Unimed BH em seu time de QA.
+
 - **Email**: [lucasmnclima@gmail.com](lucasmnclima@gmail.com)
 - **LinkedIn**: [Lucas Nascimento](https://www.linkedin.com/in/lucasmnclima/)
 
