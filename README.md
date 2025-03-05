@@ -26,8 +26,10 @@ Bem-vindo ao meu repositório de Testes de Software! Este repositório contém u
 - Desenvolvimento de cenários de teste robustos para validar regras de negócio e assegurar a funcionalidade correta do software.
 
 ## 🛠️ Ferramentas Utilizadas
+- **JavaScript**: Para a escrita de código automatizado.
 - **Cucumber**: Para escrita de cenários e criação de features.
 - **Cypress**: Para automação de testes de interface do usuário.
+- **Faker**: Biblioteca para gerar massa de dados fake.
 - **Jira**: Para gerenciamento de projetos e acompanhamento de tarefas.
 - **JUnit**: Para execução de testes unitários em código Java.
 - **Postman**: Para testes de API e validação de endpoints.
