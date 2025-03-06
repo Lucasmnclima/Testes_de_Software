@@ -6,13 +6,15 @@ import { faker } from '@faker-js/faker';
 describe('Funcionalidade: Cadastro na loja EBAC', () => {
     
     beforeEach(() => {
-        cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
+        cy.visit('minha-conta')
     });
 
     it('Deve fazer cadastro com sucesso', () => {
+        var senhaVelha = faker.internet.password()
+        var novaSenha = faker.internet.password()
+
         cy.get('#reg_email').type(faker.internet.email()) 
-            // gerando um email fake. Faker cria aleatoriamente emails sempre que gerar o teste
-        cy.get('#reg_password').type('teste@123')
+        cy.get('#reg_password').type(senhaVelha)
         cy.get(':nth-child(4) > .button').click('')
         cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('exist')
 
@@ -20,17 +22,17 @@ describe('Funcionalidade: Cadastro na loja EBAC', () => {
         cy.get('#account_first_name').type(faker.person.firstName())
         cy.get('#account_last_name').type(faker.person.lastName())
 
-        // cy.get('#account_display_name').type(faker.person.fullName())
+        cy.get('#account_display_name').type(faker.person.fullName())
         
-        // cy.get('#password_current').type(faker.internet.password())
-        // cy.get('#password_1').type(faker.internet.password())
-        // cy.get('#password_2').type(faker.internet.password())
+        cy.get('#password_current').type(senhaVelha)
+        cy.get('#password_1').type(novaSenha)
+        cy.get('#password_2').type(novaSenha)
 
         cy.get('.woocommerce-Button').click()
         cy.get('.woocommerce-message').should('exist')
     });
 
-    it.only('Deve fazer cadastro com sucesso - usando variáveis', () => {
+    it('Deve fazer cadastro com sucesso - usando variáveis', () => {
         var nome = faker.person.firstName()
         var email = faker.internet.email(nome)
         var sobrenome = faker.person.lastName()
@@ -55,4 +57,12 @@ describe('Funcionalidade: Cadastro na loja EBAC', () => {
         cy.get('.woocommerce-Button').click()
         cy.get('.woocommerce-message').should('exist')
     });
+
+    it.only('Deve fazer cadastro com sucesso - usando comando customizado', () => {
+        var senhaVelha = faker.internet.password()
+        var novaSenha = faker.internet.password()
+
+        cy.preCadastro(faker.internet.email(), senhaVelha, faker.person.firstName(), faker.person.lastName(), novaSenha)
+        cy.get('.woocommerce-message').should('exist')
+    })
 });

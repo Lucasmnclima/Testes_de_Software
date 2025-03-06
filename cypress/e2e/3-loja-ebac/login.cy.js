@@ -1,6 +1,9 @@
 /// <reference types="cypress" />
 // Referencia para o sistema entender que é um cypress code
 
+const perfil = require('../../fixtures/perfil.json')
+
+
 // Caminho feliz
 /*  Os cenáros ficam dentro do describe. 
     O describe é um agrupador de cenários. 
@@ -10,9 +13,9 @@ describe('Funcionalidade: Login na loja EBAC', () => {
     // BeforeEach é um hook que executa antes de cada teste
     beforeEach(() => {
         // Acessar a página de login visita a url que queremos testar
-        cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
+        cy.visit('minha-conta')
     });
-    
+
     it('Deve fazer login com sucesso', () => {
         // Inserir o email
         cy.get('#username').type('lucas@teste.com.br')
@@ -24,7 +27,7 @@ describe('Funcionalidade: Login na loja EBAC', () => {
         // should é um método de validação. Está validando a mensagem de login correto
         cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, lucas (não é lucas? Sair)')
     })
-    
+
     // Usuário inválido
     // only é uma forma de rodar apenas um teste
     it('Deve exibir mensagem de erro ao inserir o usuário inválido', () => {
@@ -52,9 +55,27 @@ describe('Funcionalidade: Login na loja EBAC', () => {
         cy.get('.woocommerce-error > li').should('contain', 'Erro: A senha fornecida para o e-mail lucas@teste.com.br está incorreta. Perdeu a senha?')
     })
 
-    // afterEach é um hook que executa depois de cada teste
-    // afterEach(() => {
-    //     //O screenshot vai tirar uma foto da tela após cada teste
-    //     cy.screenshot()
-    // })
+    // Teste com arquivo de dados
+    it('Deve fazer login com sucesso - Usando massa de dados', () => {
+        cy.get('#username').type(perfil.usuario)
+        cy.get('#password').type(perfil.senha)
+        cy.get('.woocommerce-form > .button').click('')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, lucas (não é lucas? Sair)')
+    });
+
+    // Usando Fixture
+    it('Deve fazer login com sucesso - Usando Fixture', () => {
+        cy.fixture('perfil').then(dados => {
+            cy.get('#username').type(dados.usuario , {log: false})
+            cy.get('#password').type(dados.senha, {log: false})
+            cy.get('.woocommerce-form > .button').click('')
+            cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('contain', 'Olá, lucas (não é lucas? Sair)')
+        })
+    });
+
+    it.only('Deve fazer login com sucesso - usando comandos customizados', () => {
+        cy.login('lucas@teste.com.br', 'teste@123')
+        cy.get('.woocommerce-MyAccount-content > :nth-child(2)').should('exist')
+        
+    });
 })
