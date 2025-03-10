@@ -10,6 +10,7 @@ describe('Funcionalidade: Detalhes da Conta - Loja EBAC', () => {
     });
 
     it('Deve completar detalhes da conta com sucesso', () => {
+        // Utilizando preenchimento com commands.js para support
         cy.detalhesConta('Lucas', 'Nascimento', 'Lucas.QA')
         cy.get('.woocommerce-message').should('exist')
     })

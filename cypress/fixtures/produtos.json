@@ -1,0 +1,32 @@
+[
+    {
+        "nomeProduto": "Abominable Hoodie",
+        "tamanho": "XS",
+        "cor": "Blue",
+        "quantidade": 3
+    },
+    {
+        "nomeProduto": "Aero Daily Fitness Tee",
+        "tamanho": "S",
+        "cor": "Black",
+        "quantidade": 5
+    },
+    {
+        "nomeProduto": "Ariel Roll Sleeve Sweatshirt",
+        "tamanho": "M",
+        "cor": "Green",
+        "quantidade": 1
+    },
+    {
+        "nomeProduto": "Augusta Pullover Jacket",
+        "tamanho": "L",
+        "cor": "Red",
+        "quantidade": 2
+    },
+    {
+        "nomeProduto": "Geo Insulated Jogging Pant",
+        "tamanho": "34",
+        "cor": "Green",
+        "quantidade": 3
+    }
+]
