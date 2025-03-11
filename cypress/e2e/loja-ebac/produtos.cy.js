@@ -4,7 +4,7 @@
 import produtosPage from '../../support/page-objects/produtos.page'
 
 describe('Funcionalidade: Produtos - Loja EBAC', () => {
-    
+
     beforeEach(() => {
         produtosPage.visitarUrl()
     });
@@ -37,17 +37,18 @@ describe('Funcionalidade: Produtos - Loja EBAC', () => {
         produtosPage.buscarProduto('Selene Yoga Hoodie') // buscando produto
         produtosPage.addProdutoCarrinho('M', 'Purple', quantidade) /* adicionando produto ao carrinho O produto está configurado no support */
         cy.get('.woocommerce-message').should('contain', 'foram adicionados no seu carrinho.') // validando mensagem de sucesso
-        
+
     });
 
-    it.only('Deve adicionar produto ao carrinho - buscando da massa de dados', () => {
-        cy.fixture('produtos').then(dados => {
-            produtosPage.buscarProduto(dados[0].nomeProduto) 
-            produtosPage.addProdutoCarrinho(
-                dados[0].tamanho, 
-                dados[0].cor, 
-                dados[0].quantidade)
-            cy.get('.woocommerce-message').should('contain', dados[0].nomeProduto)
+    cy.fixture('produtos').then(dados => { //criei produtos.json para armazenar os produtos
+        dados.forEach(produto => { // Com o forEach, percorremos cada produto do arquivo produtos.json
+            produtosPage.buscarProduto(produto.nomeProduto) // Buscamos o produto na loja
+            produtosPage.addProdutoCarrinho( // Adicionamos o produto ao carrinho
+                produto.tamanho, // escolhendo o tamanho
+                produto.cor,  // escolhendo a cor
+                produto.quantidade) // escolhendo a quantidade
+            cy.get('.woocommerce-message').should('contain', produto.nomeProduto) // Validamos se o produto foi adicionado ao carrinho
+            cy.get('.woocommerce-message').find('a').click() // Clicamos no link para ir para o carrinho
         })
-    });
+    })
 });
