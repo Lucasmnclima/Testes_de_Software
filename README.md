@@ -33,6 +33,7 @@ Bem-vindo ao meu repositório de Testes de Software! Este repositório contém u
 - **Jira**: Para gerenciamento de projetos e acompanhamento de tarefas.
 - **JUnit**: Para execução de testes unitários em código Java.
 - **Postman**: Para testes de API e validação de endpoints.
+-- **Newman**: Para executar coleções de testes no backend. 
 
 ## 📚 Sobre Mim
 
