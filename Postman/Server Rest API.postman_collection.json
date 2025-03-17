@@ -313,7 +313,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Validar mensagem de email usado\", function () {\r",
+									"pm.test(\"Validar mensagem de sucesso\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"Cadastro realizado com sucesso\");\r",
 									"});\r",
 									"\r",
@@ -321,12 +321,12 @@
 									"    pm.response.to.have.status(201);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Code 400 quando email já\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"pm.test(\"Validar mensagem de email já cadastrado\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Este email já está sendo usado\");\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Validar email da lista\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"Este email já está sendo usado\");\r",
+									"pm.test(\"Code 400 quando email já cadastrado\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -367,20 +367,20 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Validar usuário encontrado por _id\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"_id\");\r",
+									"pm.test(\"Validar mensagem de sucesso\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Cadastro realizado com sucesso\");\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Code 200 para usuário encontrado\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"pm.test(\"Code 201 para usuário cadastrado com sucesso\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Code 400 Usuário não encontrado\", function () {\r",
+									"pm.test(\"Validar mensagem de email já cadastrado\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Este email já está sendo usado\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Code 400 quando email já cadastrado\", function () {\r",
 									"    pm.response.to.have.status(400);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Mensagem de usuário não encontrado\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"Usuário não encontrado\");\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -425,24 +425,20 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Validar mensagem de excluir registro com sucesos\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"Registro excluído com sucesso\");\r",
+									"pm.test(\"Validar mensagem de sucesso\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Cadastro realizado com sucesso\");\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Validar mensagem de nenhum registro excluído\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"Nenhum registro excluído\");\r",
+									"pm.test(\"Code 201 para usuário cadastrado com sucesso\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Code 200 para sucesso em excluir ou não encontrar registro\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"pm.test(\"Validar mensagem de email já cadastrado\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Este email já está sendo usado\");\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Code 400 Usuário com carrinho cadastrado\", function () {\r",
+									"pm.test(\"Code 400 quando email já cadastrado\", function () {\r",
 									"    pm.response.to.have.status(400);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Mensagem negando excluir\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"Não é permitido excluir usuário com carrinho cadastrado\");\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -484,29 +480,20 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Validar mensagem de registro alterado com sucesso\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"Registro alterado com sucesso\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Code 200 para alteração com sucesso\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Validar mensagem de cadastro\", function () {\r",
+									"pm.test(\"Validar mensagem de sucesso\", function () {\r",
 									"    pm.expect(pm.response.text()).to.include(\"Cadastro realizado com sucesso\");\r",
 									"});\r",
 									"\r",
-									"\r",
-									"pm.test(\"Code 201 para cadastro com sucesso\", function () {\r",
+									"pm.test(\"Code 201 para usuário cadastrado com sucesso\", function () {\r",
 									"    pm.response.to.have.status(201);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"E-mail já cadastradoo\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
+									"pm.test(\"Validar mensagem de email já cadastrado\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Este email já está sendo usado\");\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Mensagem de email já sendo usado\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"Este email já está sendo usado\");\r",
+									"pm.test(\"Code 400 quando email já cadastrado\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
 									"});"
 								],
 								"type": "text/javascript",
@@ -536,154 +523,6 @@
 							"path": [
 								"usuarios",
 								"qdrIbAjMwwCQaXNG"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Carrinhos",
-			"item": [
-				{
-					"name": "Listar Carrinhos",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Code 200 para listar carrinhos\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/carrinhos",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"carrinhos"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Cadastrar carrinhos",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Code 201 para cadastro realizado com sucesso\", function () {\r",
-									"    pm.response.to.have.status(201);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Algo deu errado\", function () {\r",
-									"    pm.response.to.have.status(400);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Token ausente\", function () {\r",
-									"    pm.response.to.have.status(401);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Algo deu errado\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"Não é permitido possuir produto duplicado | Não é permitido ter mais de 1 carrinho | Produto não encontrado | Produto não possui quantidade suficiente\");\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{token}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"produtos\": [\r\n    {\r\n      \"idProduto\": \"9t7eyhwZ4jEpVIYJ\",\r\n      \"quantidade\": 2\r\n    },\r\n    {\r\n      \"idProduto\": \"NTnpMjLrMDilHXF3\",\r\n      \"quantidade\": 3\r\n    }\r\n  ]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:3000/carrinhos",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"carrinhos"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Concluir compra | excluir carrinho",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Code 200 Registro excluído com sucesso | Não foi encontrado carrinho para esse usuário\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Validando mensagem de sucesso\", function () {\r",
-									"    pm.expect(pm.response.text()).to.include(\"Registro excluído com sucesso\");\r",
-									"});\r",
-									"\r",
-									"\r",
-									"pm.test(\"Token ausente, inválido ou expirado\", function () {\r",
-									"    pm.response.to.have.status(401);\r",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{token}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "http://localhost:3000/carrinhos/concluir-compra/aaaa",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"carrinhos",
-								"concluir-compra",
-								"aaaa"
 							]
 						}
 					},
