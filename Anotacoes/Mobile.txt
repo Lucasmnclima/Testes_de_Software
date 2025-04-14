@@ -1,6 +1,7 @@
 Referências
-Appium Docs - https://appium.io/docs/en/2.2 
-Homebrew - https://brew.sh/ Nodejs -https://nodejs.org/en 
+Appium Docs - https://appium.io/docs/en/2.2
+Homebrew - https://brew.sh/ 
+Nodejs -https://nodejs.org/en 
 Nodejs Homebrew - https://formulae.brew.sh/formula/node 
 JDK - https://www.oracle.com/br/java/technologies/downloads/ 
 JDK Homebrew - https://formulae.brew.sh/formula/openjdk 
@@ -10,3 +11,4 @@ Appium Inspector - https://github.com/appium/appium-inspector/releases
 Bundletool - https://developer.android.com/tools/bundletool?hl=pt-br#download 
 Bundletool Homebrew - https://formulae.brew.sh/formula/bundletool 
 Repositório com o App ebacshop.aab - https://github.com/EBAC-QE/mobile-apps
+
