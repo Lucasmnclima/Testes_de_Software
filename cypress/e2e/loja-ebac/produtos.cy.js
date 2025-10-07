@@ -40,15 +40,36 @@ describe('Funcionalidade: Produtos - Loja EBAC', () => {
 
     });
 
-    cy.fixture('produtos').then(dados => { //criei produtos.json para armazenar os produtos
-        dados.forEach(produto => { // Com o forEach, percorremos cada produto do arquivo produtos.json
-            produtosPage.buscarProduto(produto.nomeProduto) // Buscamos o produto na loja
-            produtosPage.addProdutoCarrinho( // Adicionamos o produto ao carrinho
-                produto.tamanho, // escolhendo o tamanho
-                produto.cor,  // escolhendo a cor
-                produto.quantidade) // escolhendo a quantidade
-            cy.get('.woocommerce-message').should('contain', produto.nomeProduto) // Validamos se o produto foi adicionado ao carrinho
-            cy.get('.woocommerce-message').find('a').click() // Clicamos no link para ir para o carrinho
-        })
-    })
+
+    it('Deve adicionar múltiplos produtos ao carrinho a partir de dados', () => {
+        cy.fixture('produtos').then(dados => {
+            dados.forEach(produto => {
+                // Visita a página de produtos a cada iteração para garantir que estamos no lugar certo
+                produtosPage.buscarProduto(produto.nomeProduto);
+                produtosPage.addProdutoCarrinho(
+                    produto.tamanho,
+                    produto.cor,
+                    produto.quantidade);
+                // Apenas valida a mensagem de sucesso a cada adição
+                cy.get('.woocommerce-message').should('contain', produto.nomeProduto) // Validamos se o produto foi adicionado ao carrinho
+            });
+        });
+    });
 });
+
+
+
+
+    // it('Deve adicionar múltiplos produtos ao carrinho a partir de dados', () => {
+    //     cy.fixture('produtos').then(dados => { //criei produtos.json para armazenar os produtos
+    //         dados.forEach(produto => { // Com o forEach, percorremos cada produto do arquivo produtos.json
+    //             produtosPage.buscarProduto(produto.nomeProduto) // Buscamos o produto na loja
+    //             produtosPage.addProdutoCarrinho( // Adicionamos o produto ao carrinho
+    //                 produto.tamanho, // escolhendo o tamanho
+    //                 produto.cor,  // escolhendo a cor
+    //                 produto.quantidade) // escolhendo a quantidade
+    //             cy.get('.woocommerce-message').should('contain', produto.nomeProduto) // Validamos se o produto foi adicionado ao carrinho
+    //             cy.get('.woocommerce-message').find('a').click() // Clicamos no link para ir para o carrinho
+    //         })
+    //     })
+    // });
