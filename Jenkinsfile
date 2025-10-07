@@ -1,13 +1,7 @@
-// Inicia a definição do nosso pipeline
 pipeline {
-    // Define o ambiente de execução. Note que atualizei a imagem para uma versão mais recente
-    // do Cypress, que é mais provável que o seu projeto 'loja-ebac' use.
-    agent {
-        docker { image 'cypress/included:12.17.4' }
-    }
+    // Não vamos definir um agente global. Cada estágio dirá onde deve rodar.
+    agent none 
 
-    // Passo 1: Definir os Parâmetros (O "Menu de Opções")
-    // Aqui criamos o menu dropdown que aparecerá no Jenkins.
     parameters {
         choice(
             name: 'SUITE_DE_TESTES',
@@ -16,35 +10,29 @@ pipeline {
         )
     }
 
-    // Passo 2: Definir os Estágios
     stages {
+        // Estágio 1: Baixar o código. Pode rodar em qualquer agente.
         stage('Checkout') {
+            agent any
             steps {
                 echo 'Baixando o código do repositório...'
                 checkout scm
             }
         }
 
-        // Este estágio agora tem lógica para decidir o que fazer
-        stage('Instalar & Testar') {
+        // Estágio 2: Instalar e Testar. ESTE roda dentro do Docker.
+        stage('Install & Test') {
+            agent {
+                docker { image 'cypress/included:12.17.4' }
+            }
             steps {
-                // O bloco 'script' nos permite usar lógica como 'if/else'
                 script {
-                    // SE o usuário escolheu 'loja-ebac' no menu...
                     if (params.SUITE_DE_TESTES == 'loja-ebac') {
                         echo "Executando a suíte de testes: Loja EBAC"
-                        
-                        // Passos para o projeto principal (loja-ebac)
                         sh 'npm ci'
-                        // Usamos a flag --spec para dizer ao Cypress para rodar apenas os testes da pasta especificada
                         sh 'npx cypress run --spec "cypress/e2e/loja-ebac/*.cy.js" --reporter junit --reporter-options "mochaFile=results/results-ebac.xml,toConsole=true"'
-
-                    // SENÃO, SE o usuário escolheu 'basico-v2'...
                     } else if (params.SUITE_DE_TESTES == 'basico-v2') {
                         echo "Executando a suíte de testes: Básico v2"
-                        
-                        // Passos para o sub-projeto (basico-v2)
-                        // Note que ainda precisamos do 'dir' aqui
                         dir('cypress-basico-v2') {
                             sh 'npm ci'
                             sh 'npx cypress run --reporter junit --reporter-options "mochaFile=../results/results-basico.xml,toConsole=true"'
@@ -53,18 +41,18 @@ pipeline {
                 }
             }
         }
-    }
 
-    // Passo 3: Ações Pós-Execução (Agora funciona para ambos)
-    post {
-        always {
-            echo 'Processo finalizado. Gerando relatórios...'
-
-            // O JUnit agora procura por qualquer arquivo .xml na pasta results
-            junit 'results/*.xml'
-
-            // O 'archiveArtifacts' agora procura vídeos e screenshots em qualquer subpasta do projeto
-            archiveArtifacts artifacts: '**/cypress/videos/**/*.mp4, **/cypress/screenshots/**/*.png', allowEmptyArchive: true
+        // Estágio 3: Publicar os resultados. Roda no agente principal do Jenkins.
+        stage('Publicar Resultados') {
+            agent any
+            steps {
+                echo 'Processo finalizado. Gerando relatórios...'
+                // O 'always()' garante que os relatórios sejam publicados mesmo se os testes falharem
+                always {
+                    junit 'results/*.xml'
+                    archiveArtifacts artifacts: '**/cypress/videos/**/*.mp4, **/cypress/screenshots/**/*.png', allowEmptyArchive: true
+                }
+            }
         }
     }
 }
